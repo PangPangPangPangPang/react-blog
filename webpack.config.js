@@ -14,8 +14,19 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
+          plugins: [
+            ["import", {
+              "libraryName": "antd",
+              "libraryDirectory": "lib",
+              "style": "css"
+            }]
+          ],
           presets: ['es2015', 'react'] // es2015 处理 ES6 语法，react 处理 jsx 语法
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
       }
     ]
   },
