@@ -21,12 +21,16 @@ module.exports = {
               "style": "css"
             }]
           ],
-          presets: ['es2015', 'react'] // es2015 处理 ES6 语法，react 处理 jsx 语法
+          presets: ['es2015', 'react', "stage-0"] // es2015 处理 ES6 语法，react 处理 jsx 语法
         }
       },
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader',
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },

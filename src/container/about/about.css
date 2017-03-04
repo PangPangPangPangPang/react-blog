@@ -1,0 +1,22 @@
+.title {
+	background-color: deepskyblue;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 5px;
+	color: white;
+	text-align: center;
+}
+.content {
+	height:150px;
+	padding-top: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10%;
+}
