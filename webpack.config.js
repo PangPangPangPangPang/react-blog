@@ -6,7 +6,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: './src/App.js',
-  output: { path: __dirname, filename: 'bundle.js' }, // 编译到的文件
+  output: { path: './build', filename: 'bundle.js' }, // 编译到的文件
   module: {
     loaders: [ // 使用特定的加载器 loader 处理特定的文件
       {
@@ -31,6 +31,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=25000'
       }
     ]
   },

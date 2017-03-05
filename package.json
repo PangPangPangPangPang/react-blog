@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "theme": {
+    "primary-color": "#7FFFD4"
+  },
   "author": "Max",
   "license": "ISC",
   "devDependencies": {
@@ -22,6 +25,7 @@
   },
   "dependencies": {
     "antd": "^2.7.4",
+    "file-loader": "^0.10.1",
     "highlight.js": "^9.9.0",
     "marked": "^0.3.6",
     "react": "^15.4.2",
@@ -30,6 +34,7 @@
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "url-loader": "^0.5.8"
   }
 }

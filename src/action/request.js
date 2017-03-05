@@ -21,7 +21,6 @@ export default function request(url, params, method) {
       'content-type': 'application/json'
     };
   }
-
   return function (dispatch) {
     return fetch(url, reqparams)
       .then(res => res.json())

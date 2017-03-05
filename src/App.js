@@ -14,6 +14,7 @@ import { Provider } from 'react-redux'
 import About from './container/about/about'
 import Home from './container/home_page/home'
 import List from './container/list/list'
+import Tag from './container/tag/tag'
 import Article from './container/article/article'
 
 let logger = createLogger()
@@ -26,6 +27,7 @@ ReactDOM.render((
         <IndexRedirect to="home"/>
         <Route path="home" component={Home}/>
         <Route path="about" component={About}/>
+        <Route path="tag" component={Tag}/>
         <Route path="list" component={List}/>
         <Route path="list/(:id)" component={Article}/>
       </Route>

@@ -14,7 +14,7 @@ export default class About extends React.Component {
   }
   render() {
     return (
-      <div className="card">
+      <div className="about-card">
         <Timeline>
           <Timeline.Item color="green">
             <p style={{fontWeight: 'bold'}}>百度</p>

@@ -1,6 +1,8 @@
 /**
  * Created by wangyefeng on 02/03/2017.
  */
+//navigator height 48px
+
 import React from "react"
 import { BackTop, Menu, Icon } from 'antd'
 import { hashHistory } from "react-router"
@@ -25,6 +27,9 @@ class Navigator extends React.Component {
       case 'article':
         hashHistory.push('list')
         break
+      case 'tag':
+        hashHistory.push('tag')
+        break
       default:
         break
     }
@@ -46,16 +51,9 @@ class Navigator extends React.Component {
         <Menu.Item key="article" >
           <Icon type="file-text" />Article
         </Menu.Item>
-        <SubMenu title={<span><Icon type="tag-o" />Tags</span>}>
-          <MenuItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
+        <Menu.Item key="tag">
+          <Icon type="tag-o"/>Tags
+        </Menu.Item>
         <Menu.Item key="smile">
           <Icon type="smile-o"/>About Me
         </Menu.Item>
