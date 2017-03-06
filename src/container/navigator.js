@@ -16,7 +16,6 @@ class Navigator extends React.Component {
     current: 'mail',
   }
   handleClick = (e) => {
-    console.log('click ', e);
     switch (e.key) {
       case 'smile':
         hashHistory.push('about')

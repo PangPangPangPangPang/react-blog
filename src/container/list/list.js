@@ -6,38 +6,49 @@ import './list.css'
 import Summary from '../../compontent/summary'
 import request from '../../action/request'
 import { connect } from 'react-redux'
+import getStore from '../../App'
 
 class List extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      content: new Array()
+      content: getStore().getState().request.list || {}
     }
   }
   componentDidMount() {
     let { dispatch } = this.props
-    dispatch(request('http://www.mmmmmax.wang/list'))
-      .then(res => {
-        this.setState({
-          content: res
-        })
-      })
+    dispatch(request('list'))
   }
-   getlist = () => {
+  getlist = () => {
     let list = new Array()
-    let source_list = this.state.content
-    for (let i = 0; i < source_list.length; i++) {
-      list.push(<Summary key={i} tags={source_list[i].tags} name={source_list[i].title} id={source_list[i].id} time={source_list[i].time}/>)
+    let source = this.props.list || {}
+    let source_list = source.res
+    if (source_list instanceof Array) {
+      for (let i = 0; i < source_list.length; i++) {
+        list.push(<Summary
+          key={i}
+          tags={source_list[i].tags}
+          name={source_list[i].title}
+          id={source_list[i].id}
+          time={source_list[i].time}
+        />)
+      }
     }
     return list
   }
   render() {
     return (
       <div className="list-template">
-        {this.getlist(10)}
+        {this.getlist()}
       </div>
     )
   }
 }
 
-export default connect()(List)
+function mapStateToProps(state) {
+  return {
+    list: state.request.list
+  }
+}
+
+export default connect(mapStateToProps)(List)

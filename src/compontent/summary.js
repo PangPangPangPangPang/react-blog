@@ -7,11 +7,11 @@ import { Card, Tag } from 'antd'
 import { Link } from 'react-router'
 import { hashHistory} from 'react-router'
 
-class Summary extends React.Component {
-  click_detail = (e) => {
-    hashHistory.push('list/'+this.props.id)
+let Summary = (props) => {
+  let click_detail = () => {
+    hashHistory.push('list/'+props.id)
   }
-  random_color = () => {
+  let random_color = () => {
     let color_list = [
       "pink-inverse",
       "red-inverse",
@@ -24,21 +24,18 @@ class Summary extends React.Component {
     let count = Math.floor((Math.random() * color_list.length))
     return color_list[count]
   }
-  render_tag = () => {
+  let render_tag = () => {
     let arr = new Array()
-    for (let i = 0; i < this.props.tags.length; i++) {
-      arr.push(<Tag color={this.random_color()} key={i}>{this.props.tags[i]}</Tag>)
+    for (let i = 0; i < props.tags.length; i++) {
+      arr.push(<Tag color={random_color()} key={i}>{props.tags[i]}</Tag>)
     }
     return arr
   }
-  render() {
-    return (
-      <Card title={this.props.name} onClick={this.click_detail} extra={<Link >Detail</Link>} className="summary-card">
-
-        {this.render_tag()}
-      </Card>
-    )
-  }
+  return (
+    <Card title={props.name} onClick={click_detail} extra={<Link >Detail</Link>} className="summary-card">
+      {render_tag()}
+    </Card>
+  )
 }
 
 export default Summary
