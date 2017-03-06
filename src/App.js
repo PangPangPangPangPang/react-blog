@@ -20,6 +20,10 @@ import Article from './container/article/article'
 let logger = createLogger()
 let store = createStore(reducer, applyMiddleware(thunk, logger))
 
+export default function () {
+  return store
+}
+
 ReactDOM.render((
   <Provider store={store}>
     <Router history={hashHistory}>

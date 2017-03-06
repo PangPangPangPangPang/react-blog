@@ -16,7 +16,7 @@ class List extends React.Component {
   }
   componentDidMount() {
     let { dispatch } = this.props
-    dispatch(request('http://localhost:8000/list'))
+    dispatch(request('http://www.mmmmmax.wang/list'))
       .then(res => {
         this.setState({
           content: res

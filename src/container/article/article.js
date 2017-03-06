@@ -34,7 +34,7 @@ class Article extends React.Component {
   componentDidMount() {
     let { dispatch } = this.props
     let dic = {id: this.props.params.id}
-    dispatch(request('http://localhost:8000/article', dic, 'get'))
+    dispatch(request('http://www.mmmmmax.wang/article', dic, 'get'))
       .then(res => {
         this.setState({
           content: res.content
