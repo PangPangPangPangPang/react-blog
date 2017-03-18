@@ -1,11 +1,12 @@
 /**
  * Created by wangyefeng on 02/03/2017.
  */
+import { Button } from 'antd'
 import React from 'react'
 import './home.css'
-import { Carousel, Button} from 'antd';
 import '../about/about.css'
 import Img from './timg.jpg'
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -13,20 +14,19 @@ export default class Home extends React.Component {
   }
   componentWillMount() {
   }
-  click = (e) => {
+  click = () => {
     this.setState({
-      show: !this.state.show
+      show: !this.state.show,
     })
   }
-  img_style = {
+  imgStyle = {
     height: document.body.clientHeight - 48,
-    width: (document.body.clientHeight) / 1000 * 839,
+    width: ((document.body.clientHeight) / 1000) * 839,
   }
   render() {
     return (
-      <div className="home-template" style={{height: document.body.clientHeight - 48}}>
-        <img className="home-img" src={Img} style={this.img_style}>
-        </img>
+      <div className="home-template" style={{ height: document.body.clientHeight - 48 }}>
+        <img className="home-img" src={Img} style={this.imgStyle} alt="" />
         <Button className="home-button" type="default" onClick={this.click}>
           Superise!
           <div className="home-side" hidden={this.state.show}>

@@ -1,8 +1,8 @@
 /**
  * Created by wangyefeng on 02/03/2017.
  */
-var path = require('path');
-var webpack = require('webpack');
+// const path = require('path');
+// const webpack = require('webpack');
 
 module.exports = {
   entry: './src/App.js',
@@ -15,10 +15,10 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           plugins: [
-            ["import", {
-              "libraryName": "antd",
-              "libraryDirectory": "lib",
-              "style": "css"
+            ['import', {
+              libraryName: 'antd',
+              libraryDirectory: 'lib',
+              'style': 'css'
             }]
           ],
           presets: ['es2015', 'react', "stage-0"] // es2015 处理 ES6 语法，react 处理 jsx 语法

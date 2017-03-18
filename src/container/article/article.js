@@ -7,42 +7,42 @@ import 'highlight.js/styles/darcula.css'
 import { connect } from 'react-redux'
 import request from '../../action/request'
 
-var renderer = new marked.Renderer();
+const renderer = new marked.Renderer()
 
 renderer.heading = function (text, level) {
-  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+  const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-')
 
   return '<h' + level + '><a name="' +
     escapedText +
     '" class="anchor" href="#' +
     escapedText +
     '"><span class="header-link"></span></a>' +
-    text + '</h' + level + '>';
+    text + '</h' + level + '>'
 }
 marked.setOptions({
   highlight: function (code) {
     return require('highlight.js').highlightAuto(code).value;
   },
-  renderer: renderer
-});
+  renderer: renderer,
+})
 
 class Article extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { content: ''}
+    this.state = { content: '' }
   }
   componentDidMount() {
-    let { dispatch } = this.props
-    let dic = {id: this.props.params.id}
+    const { dispatch } = this.props
+    const dic = { id: this.props.params.id }
     dispatch(request('article', dic, 'get'))
       .then(res => {
         this.setState({
-          content: res.content
+          content: res.content,
         })
       })
   }
   render() {
-    return <div className="page"  dangerouslySetInnerHTML={{ __html: marked(this.state.content)}}/>
+    return <div className="page" dangerouslySetInnerHTML={{ __html: marked(this.state.content) }} />
   }
 }
 

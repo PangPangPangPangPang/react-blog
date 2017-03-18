@@ -3,12 +3,13 @@
  */
 import React from 'react'
 
-export default class Tag extends React.Component {
-  render() {
-    return (
-      <div>
-        Pending to do!
-      </div>
-    )
-  }
+const Tag = (props) => {
+  console.log(props)
+  return (
+    <div>
+      Pending to do!
+    </div>
+  )
 }
+
+export default Tag

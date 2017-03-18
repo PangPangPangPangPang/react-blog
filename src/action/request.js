@@ -3,50 +3,51 @@
  */
 
 import Type from './type'
-import getStore from '../App.js'
+import getStore from '../App'
 
-const base_url = 'http://www.mmmmmax.wang/'
+const baseUrl = 'http://www.mmmmmax.wang/'
+// const baseUrl = 'http://localhost:8000/'
+function requestAction(type, query, res) {
+  return {
+    type,
+    query,
+    res,
+  }
+}
 
 export default function request(url, params, method) {
-  var reqparams = {};
-  var request_url = base_url + url
+  const reqparams = {}
+  let requestUrl = baseUrl + url
   if (arguments.length < 3) {
-    method = 'get';
+    method = 'get'
   }
-  if (arguments.length == 1) {
+  if (arguments.length === 1) {
     params = {}
   }
   if (method === 'get') {
-    let querystring = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
+    const querystring = Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
     if (querystring.length !== 0) {
-      request_url += `?${querystring}`;
+      requestUrl += `?${querystring}`
     }
   } else {
-    reqparams.body = json.stringify(params);
+    reqparams.body = json.stringify(params)
     reqparams.headers = {
-      'content-type': 'application/json'
-    };
+      'content-type': 'application/json',
+    }
   }
-  getStore().dispatch(request_action(Type.REQUEST_START, url, {}))
+  getStore().dispatch(requestAction(Type.REQUEST_START, url, {}))
 
   return function (dispatch) {
-    return fetch(request_url, reqparams)
+    return fetch(requestUrl, reqparams)
       .then(res => res.json())
-      .then(res => {
-        dispatch(request_action(Type.REQUEST_SUCCESS, url, res))
+      .then((res) => {
+        dispatch(requestAction(Type.REQUEST_SUCCESS, url, res))
         return res
-          })
-      .catch(res => {
-        dispatch(request_action(Type.REQUEST_FAILURE, url, res))
+      })
+      .catch((res) => {
+        dispatch(requestAction(Type.REQUEST_FAILURE, url, res))
         return res
       })
   }
 }
 
-function request_action(type, query, res) {
-  return {
-    type: type,
-    query: query,
-    res: res
-  }
-}

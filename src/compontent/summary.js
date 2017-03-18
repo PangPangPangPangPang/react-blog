@@ -2,40 +2,47 @@
  * Created by wangyefeng on 03/03/2017.
  */
 import React from 'react'
-import './summary.css'
 import { Card, Tag } from 'antd'
-import { Link } from 'react-router'
-import { hashHistory} from 'react-router'
+import { Link, hashHistory } from 'react-router'
+import './summary.css'
 
-let Summary = (props) => {
-  let click_detail = () => {
-    hashHistory.push('list/'+props.id)
+const Summary = (props) => {
+  const clickDetail = () => {
+    hashHistory.push(`list/${props.id}`)
   }
-  let random_color = () => {
-    let color_list = [
-      "pink-inverse",
-      "red-inverse",
-      "orange-inverse",
-      "green-inverse",
-      "cyan-inverse",
-      "blue-inverse",
-      "purple-inverse"
+  const randomColor = () => {
+    const colorList = [
+      'pink-inverse',
+      'red-inverse',
+      'orange-inverse',
+      'green-inverse',
+      'cyan-inverse',
+      'blue-inverse',
+      'purple-inverse',
     ]
-    let count = Math.floor((Math.random() * color_list.length))
-    return color_list[count]
+    const count = Math.floor((Math.random() * colorList.length))
+    return colorList[count]
   }
-  let render_tag = () => {
-    let arr = new Array()
+  const renderTag = () => {
+    const arr = []
     for (let i = 0; i < props.tags.length; i++) {
-      arr.push(<Tag color={random_color()} key={i}>{props.tags[i]}</Tag>)
+      arr.push(<Tag color={randomColor()} key={i}>{props.tags[i]}</Tag>)
     }
     return arr
   }
   return (
-    <Card title={props.name} onClick={click_detail} extra={<Link >Detail</Link>} className="summary-card">
-      {render_tag()}
+    <Card title={props.name} onClick={clickDetail} extra={<Link >Detail</Link>} className="summary-card">
+      {renderTag()}
     </Card>
   )
+}
+Summary.propTypes = {
+  name: React.PropTypes.name,
+  tags: React.PropTypes.tags,
+}
+Summary.defaultProps = {
+  name: '',
+  tags: [],
 }
 
 export default Summary
