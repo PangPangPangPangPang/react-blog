@@ -21,10 +21,34 @@ renderer.heading = function heading(text, level) {
   return `<h${level}><a name="${escapedText}" class="anchor" href="#${escapedText}"><span class="header-link"></span></a>${content}</h${level}>`
 }
 
-renderer.list = function list(body) {
-  return `<div class="article-list" >${body}</div>`
+renderer.list = function list(body){
+return `<div class="article-list" >${body}</div>`
 }
 
+// renderer.list = function list(body, ordered) {
+  // const type = ordered ? 'ol' : 'ul'
+  // const attrs = {
+    // type: '',
+    // start: '',
+  // }
+
+  // if (+ordered || +ordered === 0) {
+    // if (+ordered !== 1) {
+      // attrs.start = `start="${ordered}"`
+    // }
+  // } else {
+    // const typeCase = (ordered === ordered.toUpperCase()) ? 'A' : 'a'
+    // attrs.type = `type="${typeCase}"`
+    // const startLetter = ordered.toString().toUpperCase().charCodeAt(0) - 64
+    // attrs.start = (startLetter > 1 && startLetter < 9) ? `start="${startLetter}"` : ''
+  // }
+  // const attr = [attrs.type, attrs.start].filter(x => x).join(' ')
+
+  // return `<${type} ${attr}>
+    // ${body}
+    // </${type}>
+    // `
+// }
 marked.setOptions({
   highlight(code) {
     return `<div class="article-code" >${hl.highlightAuto(code).value}</div>`
