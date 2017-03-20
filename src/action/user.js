@@ -3,7 +3,8 @@
  */
 
 import Types from './type'
-export function updateUserName(text) {
+
+export default function updateUserName(text) {
   return {
     type: Types.UPDATE_USER_NAME,
     name: text,

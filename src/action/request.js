@@ -18,26 +18,29 @@ function requestAction(type, query, res) {
 export default function request(url, params, method) {
   const reqparams = {}
   let requestUrl = baseUrl + url
+  let requestMethod = method
+  let requestParams = params
+
   if (arguments.length < 3) {
-    method = 'get'
+    requestMethod = 'get'
   }
   if (arguments.length === 1) {
-    params = {}
+    requestParams = {}
   }
-  if (method === 'get') {
-    const querystring = Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
+  if (requestMethod === 'get') {
+    const querystring = Object.keys(requestParams).map(key => `${key}=${requestParams[key]}`).join('&')
     if (querystring.length !== 0) {
       requestUrl += `?${querystring}`
     }
   } else {
-    reqparams.body = json.stringify(params)
+    reqparams.body = JSON.stringify(requestParams)
     reqparams.headers = {
       'content-type': 'application/json',
     }
   }
   getStore().dispatch(requestAction(Type.REQUEST_START, url, {}))
 
-  return function (dispatch) {
+  return function result(dispatch) {
     return fetch(requestUrl, reqparams)
       .then(res => res.json())
       .then((res) => {
