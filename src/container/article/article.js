@@ -5,6 +5,7 @@ import React from 'react'
 import marked from 'marked'
 import hl from 'highlight.js'
 import { connect } from 'react-redux'
+import '../../../node_modules/highlight.js/styles/monokai-sublime.css'
 import request from '../../action/request'
 import './article.css'
 
