@@ -6,7 +6,7 @@
 
 module.exports = {
   entry: './src/App.js',
-  output: { path: `./build'`, filename: 'bundle.js' }, // 编译到的文件
+  output: { path: `/Users/wangyefeng/flask_proj/webapp/static`, filename: 'bundle.js' }, // 编译到的文件
   module: {
     loaders: [ // 使用特定的加载器 loader 处理特定的文件
       {

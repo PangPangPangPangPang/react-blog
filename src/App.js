@@ -8,7 +8,6 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import Navigator from './container/navigator'
 import reducer from './reducer/reducer'
 import About from './container/about/about'
