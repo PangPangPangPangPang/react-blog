@@ -7,7 +7,8 @@ import React from 'react'
 import { Menu, Icon } from 'antd'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
-
+import Header from '../container/navigator/header'
+import './navigator/header.css'
 
 class Navigator extends React.Component {
   state = {
@@ -37,24 +38,8 @@ class Navigator extends React.Component {
   render() {
     return (
       <div>
-        <Menu
-          onClick={this.handleClick}
-          selectedKeys={[this.state.current]}
-          mode="horizontal"
-        >
-          <Menu.Item key="home">
-            <Icon type="home" />Home Page
-          </Menu.Item>
-          <Menu.Item key="article" >
-            <Icon type="file-text" />Article
-          </Menu.Item>
-          <Menu.Item key="tag">
-            <Icon type="tag-o" />Tags
-          </Menu.Item>
-          <Menu.Item key="smile">
-            <Icon type="smile-o" />About Me
-          </Menu.Item>
-        </Menu>
+        <Header />
+        <div className="header-placeholder" />
         {this.props.children}
       </div>
     )
