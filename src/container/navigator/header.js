@@ -5,14 +5,14 @@ import React from 'react'
 import { hashHistory } from 'react-router'
 import './header.css'
 import NormalButton from '../../compontent/normal_button'
-import HomeImg from '../../resource/png/home.png'
-import IconImg from '../../resource/png/logo.jpg'
+import Logo from '../../resource/svg/diamond.svg'
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       backgroundColor: '',
+      iconColor: '',
     }
   }
   componentDidMount() {
@@ -22,11 +22,12 @@ class Header extends React.Component {
     if (document.body.scrollTop > 90) {
       this.setState({
         backgroundColor: 'header-animation',
+        iconColor: 'header-default-icon-animation',
       })
-
     } else if (document.body.scrollTop < 70) {
       this.setState({
         backgroundColor: 'header-animation-back',
+        iconColor: 'header-default-icon-animation-back',
       })
     }
   }
@@ -46,12 +47,12 @@ class Header extends React.Component {
     return (
       <div className="header-base">
         <div className={`header-default ${this.state.backgroundColor}`} >
-          <NormalButton title="Home Page" img={HomeImg} handleClick={this.clickHome} />
-          <NormalButton title="Article" img={HomeImg} handleClick={this.clickArticle} />
-          <NormalButton title="Tags" img={HomeImg} handleClick={this.clickTags} />
-          <NormalButton title="About Me" img={HomeImg} handleClick={this.clickAbout} />
+          <NormalButton title="Home Page" img={'home'} handleClick={this.clickHome} />
+          <NormalButton title="Article" img={'article'} handleClick={this.clickArticle} />
+          <NormalButton title="Tags" img={'tag'} handleClick={this.clickTags} />
+          <NormalButton title="About Me" img={'about'} handleClick={this.clickAbout} />
         </div>
-        <img className="header-default-icon" src={IconImg} alt="" />
+        <Logo className={`header-default-icon ${this.state.iconColor}`} />
       </div>
     )
   }

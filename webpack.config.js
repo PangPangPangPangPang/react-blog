@@ -36,6 +36,10 @@ module.exports = {
         test: /\.(png|jpg)$/,
         loader: 'url-loader?limit=25000',
       },
+      {
+        test: /\.svg$/,
+        loader: 'babel-loader?presets[]=es2015,presets[]=react!svg-react-loader',
+      },
     ],
   },
 }

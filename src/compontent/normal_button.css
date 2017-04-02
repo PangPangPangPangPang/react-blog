@@ -6,22 +6,56 @@
 	align-items: center;
   padding:10px;
   margin: 10px;
-	background-color: white;
+	background-color: black;
   border-style: none;
+  border-color: white;
+}
+.normal-button-animation {
+  transition: 1s ease;
+  background-color: white;
+  border-color: black;
+  
+  /* fill: black; */
+}
+
+.normal-button-animation-back {
+	transition: 1s ease;
+  background-color: black;
+  border-color: white;
 }
 
 .normal-button-image {
   width: 20px;
   height: 20px;
-  /* margin-left: 10px; */
+  fill: white;
+}
+.normal-button-image-animation {
+  transition: 1s ease;
+  fill: black;
+}
+
+.normal-button-image-animation-back {
+  transition: 1s ease;
+  fill: white;
 }
 
 .normal-button-title {
+  background-color: black;
   margin-left: 10px;
+  color: white;
   font-weight: bold;
+}
+.normal-button-title-animation {
+  transition: 1s ease;
+  background-color: white;
+  color: black;
+}
+.normal-button-title-animation-back {
+  transition: 1s ease;
+  background-color: black;
+  color: white;
 }
 .normal-button:hover {
   border-bottom: thin solid #000000; 
-	border-radius: 2px;
-  border-width: 2px;
+  border-radius: 2px;
 }
