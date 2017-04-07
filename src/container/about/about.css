@@ -1,22 +1,29 @@
-.title {
-	background-color: deepskyblue;
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-bottom: 5px;
-	color: white;
-	text-align: center;
-}
-.content {
-	height:150px;
-	padding-top: 50px;
-	padding-left: 100px;
-	padding-right: 100px;
-}
-
 .about-card {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	padding: 10%;
+}
+
+.about-detail {
+  width: 300px;
+  height: 90px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: thin solid #000000; 
+  border-color: black;
+  border-width: 2px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.about-square {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: black;
 }

@@ -4,7 +4,6 @@
 // navigator height 48px
 
 import React from 'react'
-import { Menu, Icon } from 'antd'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
 import Header from '../container/navigator/header'

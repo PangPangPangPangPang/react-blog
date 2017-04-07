@@ -6,7 +6,7 @@
 
 module.exports = {
   entry: './src/App.js',
-  output: { path: `/Users/wangyefeng/flask_proj/webapp/static`, filename: 'bundle.js' }, // 编译到的文件
+  output: { path: `build`, filename: 'bundle.js' }, // 编译到的文件
   module: {
     loaders: [ // 使用特定的加载器 loader 处理特定的文件
       {
@@ -14,13 +14,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          plugins: [
-            ['import', {
-              libraryName: 'antd',
-              libraryDirectory: 'lib',
-              style: 'css',
-            }],
-          ],
           presets: ['es2015', 'react', 'stage-0'], // es2015 处理 ES6 语法，react 处理 jsx 语法
         },
       },
