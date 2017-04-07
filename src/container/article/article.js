@@ -44,8 +44,6 @@ renderer.listitem = function listitem(text) {
 }
 
 renderer.blockquote = function em(text) {
-  console.log('//////')
-  console.log(text)
   return `<blockquote>${text}</blockquote>`
 }
 

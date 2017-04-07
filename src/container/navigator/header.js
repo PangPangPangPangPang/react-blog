@@ -4,8 +4,6 @@
 import React from 'react'
 import { hashHistory } from 'react-router'
 import './header.css'
-import NormalButton from '../../compontent/normal_button'
-import Logo from '../../resource/svg/diamond.svg'
 
 class Header extends React.Component {
   constructor(props) {

@@ -4,7 +4,6 @@
 import React from 'react'
 
 const Tag = (props) => {
-  console.log(props)
   return (
     <div>
       Pending to do!

@@ -50,7 +50,7 @@ class NormalButton extends React.Component {
     }
   }
   getImg = () => {
-    let Img = null
+    let Img = null 
     switch (this.props.img) {
       case 'home': {
         Img = require('../resource/svg/home.svg')

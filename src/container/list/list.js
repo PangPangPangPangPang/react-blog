@@ -4,7 +4,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './list.css'
-import Summary from '../../compontent/summary'
 import request from '../../action/request'
 import getStore from '../../App'
 

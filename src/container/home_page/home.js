@@ -94,7 +94,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="home-template" style={{ height: document.body.clientHeight - 48 }}>
-        <canvas ref={(c) => { this.canvas = c }} width={`${document.body.clientWidth}`} height={"1500"} />
+        <canvas ref={(c) => { this.canvas = c }} width={`${document.body.clientWidth}`} height={'1500'} />
       </div>
     )
   }
