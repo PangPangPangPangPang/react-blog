@@ -16,6 +16,7 @@
 }
 .article-code {
   margin-top: 10px;
+  overflow-x: scroll;
   background-color: #474747;
   border-style: inherit;
   color: white;
