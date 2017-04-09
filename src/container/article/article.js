@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import '../../../node_modules/highlight.js/styles/monokai-sublime.css'
 import request from '../../action/request'
 import './article.css'
+import getStore from '../../App'
 
 const renderer = new marked.Renderer()
 
@@ -44,8 +45,6 @@ renderer.listitem = function listitem(text) {
 }
 
 renderer.blockquote = function em(text) {
-  console.log('//////')
-  console.log(text)
   return `<blockquote>${text}</blockquote>`
 }
 
@@ -58,24 +57,28 @@ class Article extends React.Component {
     const { dispatch } = this.props
     const dic = { id: this.props.params.id }
     dispatch(request('article', dic, 'get'))
-      .then((res) => {
-        this.setState({
-          content: res.content,
-        })
-      })
   }
   render() {
-    return <div className="article-page" dangerouslySetInnerHTML={{ __html: marked(this.state.content) }} />
+    return <div className="article-page" dangerouslySetInnerHTML={{ __html: marked(this.props.content.res.content) }} />
   }
 }
+
 Article.propTypes = {
   dispatch: React.PropTypes.dispatch,
   params: React.PropTypes.params,
+  content: React.PropTypes.content
 }
 
 Article.defaultProps = {
   dispatch: {},
   params: {},
+  content: {res: {content: ''}},
 }
 
-export default connect()(Article)
+function mapStateToProps(state) {
+  return {
+    content: state.request.article,
+  }
+}
+
+export default connect(mapStateToProps)(Article)

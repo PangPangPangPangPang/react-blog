@@ -17,7 +17,10 @@ class List extends React.Component {
   }
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(request('list'))
+    const state = getStore().getState()
+    if (!state.request.list) {
+      dispatch(request('list'))
+    }
   }
   getlist = () => {
     // const list = new Array()
