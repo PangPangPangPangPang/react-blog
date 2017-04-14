@@ -16,7 +16,7 @@
 
 .summary-seperate {
   width: 100%;
-  color: black;
+  color: rgb(27,27,27);
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -29,7 +29,7 @@
 }
 
 .summary-tag {
-  background-color: black;
+  background-color: rgb(27,27,27);
   font-size: 13px;
   color: white;
   border-radius: 2px;

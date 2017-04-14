@@ -31,6 +31,7 @@ class Header extends React.Component {
       })
     }
   }
+
   clickHome = () => {
     hashHistory.push('home')
   }

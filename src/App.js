@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, hashHistory, IndexRedirect } from 'react-router'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
-import React from 'react'
+import React from 'react' // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom'
 import Navigator from './container/navigator'
 import reducer from './reducer/reducer'
