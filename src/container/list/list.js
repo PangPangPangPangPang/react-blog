@@ -7,6 +7,7 @@ import './list.css'
 import Summary from '../../compontent/summary'
 import request from '../../action/request'
 import getStore from '../../App'
+import Loading from '../../compontent/loading'
 
 class List extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class List extends React.Component {
   render() {
     return (
       <div className="list-template">
+        <Loading />
         {this.getlist()}
       </div>
     )
