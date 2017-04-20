@@ -9,6 +9,7 @@ import '../../../node_modules/highlight.js/styles/monokai-sublime.css'
 import request from '../../action/request'
 import './article.css'
 import getStore from '../../App'
+import Loading from '../../compontent/loading'
 
 const renderer = new marked.Renderer()
 

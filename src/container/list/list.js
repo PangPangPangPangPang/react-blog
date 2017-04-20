@@ -44,8 +44,8 @@ class List extends React.Component {
   render() {
     return (
       <div className="list-template">
-        <Loading />
         {this.getlist()}
+        <Loading />
       </div>
     )
   }
