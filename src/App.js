@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, hashHistory, IndexRedirect } from 'react-router'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
-import React from 'react' // eslint-disable-line no-unused-vars
+import React from 'react'
 import ReactDOM from 'react-dom'
 import Navigator from './container/navigator'
 import reducer from './reducer/reducer'
@@ -22,7 +22,6 @@ const store = createStore(reducer, applyMiddleware(thunk, logger))
 export default function () {
   return store
 }
-
 ReactDOM.render((
   <Provider store={store}>
     <Router history={hashHistory}>
