@@ -4835,8 +4835,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var logger = (0, _reduxLogger2.default)();
 var store = (0, _redux.createStore)(_reducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, logger));
 
-ddd;
-
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
   { store: store },
