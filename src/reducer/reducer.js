@@ -18,7 +18,12 @@ function handleRequestSuccess(state, action) {
     case 'list':
       return Object.assign({}, state, { list: action })
     case 'article':
-      return Object.assign({}, state, { article: action })
+      if (action.res.article_id) {
+        const obj = {}
+        obj[action.res.article_id] = action
+        return Object.assign({}, state, obj)
+      }
+      return state
     default:
       return Object.assign({}, state, { ret: action })
   }

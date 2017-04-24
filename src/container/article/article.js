@@ -60,25 +60,50 @@ class Article extends React.Component {
     dispatch(request('article', dic, 'get'))
   }
   render() {
-    return <div className="article-page" dangerouslySetInnerHTML={{ __html: marked(this.props.content.res.content) }} />
+    return (
+      <div className="article-page">
+        <Loading show={this.props.displayLoading} />
+        <div
+          className="article-page"
+          dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
+      </div>
+    )
   }
 }
 
 Article.propTypes = {
-  dispatch: React.PropTypes.dispatch,
-  params: React.PropTypes.params,
-  content: React.PropTypes.content,
+  dispatch: React.PropTypes.function,
+  params: React.PropTypes.Object,
+  content: React.PropTypes.string,
+  displayLoading: React.PropTypes.number,
 }
 
 Article.defaultProps = {
   dispatch: {},
   params: {},
   content: { res: { content: '' } },
+  displayLoading: 1,
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const getShow = () => {
+    const articleId = ownProps.params.id
+    if (state.request[articleId]) {
+      return 0
+    }
+    return 1
+  }
+  const getContent = () => {
+    const articleId = ownProps.params.id
+    if (state.request[articleId]) {
+      return state.request[articleId].res.content
+    }
+    return ''
+  }
+
   return {
-    content: state.request.article,
+    content: getContent(),
+    displayLoading: getShow(),
   }
 }
 
