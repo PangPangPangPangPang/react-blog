@@ -10,6 +10,16 @@ import getStore from '../../App'
 import Loading from '../../compontent/loading'
 
 class List extends React.Component {
+  static propTypes = {
+    displayLoading: React.PropTypes.number,
+    dispatch: React.PropTypes.function,
+    list: React.PropTypes.Array,
+  }
+  static defaultProps = {
+    displayLoading: 1,
+    dispatch: {},
+    list: [],
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -24,12 +34,11 @@ class List extends React.Component {
     }
   }
   getlist = () => {
-    // const list = new Array()
     const list = []
     const source = this.props.list || {}
     const sourceList = source.res
     if (sourceList instanceof Array) {
-      for (let i = 0; i < sourceList.length; i++) {
+      for (let i = 0; i < sourceList.length; i += 1) {
         list.push(<Summary
           key={i}
           tags={sourceList[i].tags}
@@ -45,23 +54,22 @@ class List extends React.Component {
     return (
       <div className="list-template">
         {this.getlist()}
-        <Loading />
+        <Loading show={this.props.displayLoading} />
       </div>
     )
   }
 }
 
-List.propTypes = {
-  list: React.PropTypes.list,
-  dispatch: React.PropTypes.dispatch,
-}
-List.defaultProps = {
-  list: [],
-  dispatch: {},
-}
 function mapStateToProps(state) {
+  const getShow = () => {
+    if (state.request.list) {
+      return 0
+    }
+    return 1
+  }
   return {
     list: state.request.list,
+    displayLoading: getShow(),
   }
 }
 

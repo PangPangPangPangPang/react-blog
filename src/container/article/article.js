@@ -67,13 +67,13 @@ class Article extends React.Component {
 Article.propTypes = {
   dispatch: React.PropTypes.dispatch,
   params: React.PropTypes.params,
-  content: React.PropTypes.content
+  content: React.PropTypes.content,
 }
 
 Article.defaultProps = {
   dispatch: {},
   params: {},
-  content: {res: {content: ''}},
+  content: { res: { content: '' } },
 }
 
 function mapStateToProps(state) {
