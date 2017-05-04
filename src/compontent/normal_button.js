@@ -5,17 +5,24 @@
 import React from 'react'
 import './normal_button.css'
 
+const homeImg = require('../resource/svg/home.svg')
+const pushpinImg = require('../resource/svg/push-pin.svg')
+const articleImg = require('../resource/svg/notebook-1.svg')
+const aboutImg = require('../resource/svg/user-6.svg')
+const defaultImg = require('../resource/svg/home.svg')
+
+
 class NormalButton extends React.Component {
 
-  propTypes = {
+  static propTypes = {
     // default button event handler
-    handleClick: React.PropTypes.handleClick,
+    handleClick: React.PropTypes.func,
     // default button image
-    img: React.PropTypes.img,
+    img: React.PropTypes.string,
     // defalut button content
-    title: React.PropTypes.title,
+    title: React.PropTypes.string,
   }
-  defaultProps = {
+  static defaultProps = {
     handleClick: () => {},
     img: '',
     title: '',
@@ -34,6 +41,35 @@ class NormalButton extends React.Component {
     document.addEventListener('scroll', this.scrollEvent, false)
   }
 
+  getImg = () => {
+    let Img = null
+    switch (this.props.img) {
+      case 'home': {
+        Img = homeImg
+        break
+      }
+      case 'tag': {
+        Img = pushpinImg
+        break
+      }
+      case 'article': {
+        Img = articleImg
+        break
+      }
+      case 'about': {
+        Img = aboutImg
+        break
+      }
+      default: {
+        Img = defaultImg
+        break
+      }
+    }
+    return (
+      <Img className={`normal-button-image ${this.state.imgColor}`} />
+    )
+  }
+
   scrollEvent = () => {
     if (document.body.scrollTop > 90) {
       this.setState({
@@ -48,34 +84,6 @@ class NormalButton extends React.Component {
         imgColor: 'normal-button-image-animation-back',
       })
     }
-  }
-  getImg = () => {
-    let Img = null
-    switch (this.props.img) {
-      case 'home': {
-        Img = require('../resource/svg/home.svg')
-        break
-      }
-      case 'tag': {
-        Img = require('../resource/svg/push-pin.svg')
-        break
-      }
-      case 'article': {
-        Img = require('../resource/svg/notebook-1.svg')
-        break
-      }
-      case 'about': {
-        Img = require('../resource/svg/user-6.svg')
-        break
-      }
-      default: {
-        Img = require('../resource/svg/home.svg')
-        break
-      }
-    }
-    return (
-      <Img className={`normal-button-image ${this.state.imgColor}`} />
-    )
   }
 
   render() {

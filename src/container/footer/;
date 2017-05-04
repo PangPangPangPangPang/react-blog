@@ -13,7 +13,7 @@ const Summary = (props) => {
     const arr = []
     for (let i = 0; i < props.tags.length; i += 1) {
       arr.push(
-        <div key={`${i}`} className="summary-tag">
+        <div className="summary-tag">
           {props.tags[i]}
         </div>)
     }
@@ -30,8 +30,8 @@ const Summary = (props) => {
   )
 }
 Summary.propTypes = {
-  name: React.PropTypes.string,
-  tags: React.PropTypes.array,
+  name: React.PropTypes.function,
+  tags: React.PropTypes.function,
 }
 Summary.defaultProps = {
   name: '',

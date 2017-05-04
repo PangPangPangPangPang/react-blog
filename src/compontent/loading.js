@@ -31,7 +31,7 @@ class Loading extends React.Component {
 }
 
 Loading.propTypes = {
-  show: React.PropTypes.show,
+  show: React.PropTypes.number,
 }
 Loading.defaultProps = {
   show: 1,

@@ -15,6 +15,7 @@ import Home from './container/home_page/home'
 import List from './container/list/list'
 import Tag from './container/tag/tag'
 import Article from './container/article/article'
+import './App.css'
 
 const logger = createLogger()
 const store = createStore(reducer, applyMiddleware(thunk, logger))

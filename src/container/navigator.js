@@ -10,6 +10,12 @@ import Header from '../container/navigator/header'
 import './navigator/header.css'
 
 class Navigator extends React.Component {
+  static protoTypes = {
+    children: React.PropTypes.Object,
+  }
+  static defaultProps = {
+    children: {},
+  }
   state = {
     current: 'mail',
   }
@@ -43,14 +49,6 @@ class Navigator extends React.Component {
       </div>
     )
   }
-}
-
-Navigator.propTypes = {
-  children: React.PropTypes.children,
-}
-
-Navigator.defaultProps = {
-  children: {},
 }
 
 // function mapStateToProps(state) {

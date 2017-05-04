@@ -10,6 +10,7 @@ import request from '../../action/request'
 import './article.css'
 import getStore from '../../App'
 import Loading from '../../compontent/loading'
+import footer from '../footer/footer'
 
 const renderer = new marked.Renderer()
 
@@ -55,8 +56,13 @@ class Article extends React.Component {
     this.state = { content: '' }
   }
   componentDidMount() {
+    window.scrollTo(0, 0)
     const { dispatch } = this.props
     const dic = { id: this.props.params.id }
+    const store = getStore()
+    if (store.getState().request[this.props.params.id]) {
+      return
+    }
     dispatch(request('article', dic, 'get'))
   }
   render() {
@@ -66,6 +72,7 @@ class Article extends React.Component {
         <div
           className="article-page"
           dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
+        <footer />
       </div>
     )
   }
