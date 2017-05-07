@@ -5,13 +5,12 @@
 import React from 'react'
 import './footer.css'
 
-const footer = (props) => {
-  console.log(props)
-  return (
+const Footer = () =>
+  (
     <div className="footer-body">
-      aa
+      aaa
     </div>
   )
-}
 
-export default footer
+
+export default Footer

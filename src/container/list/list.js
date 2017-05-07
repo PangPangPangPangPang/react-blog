@@ -8,7 +8,7 @@ import Summary from '../../compontent/summary'
 import request from '../../action/request'
 import getStore from '../../App'
 import Loading from '../../compontent/loading'
-import footer from '../footer/footer'
+import Footer from '../footer/footer'
 import '../footer/footer.css'
 
 class List extends React.Component {
@@ -48,6 +48,9 @@ class List extends React.Component {
           time={sourceList[i].time}
         />)
       }
+      if (sourceList.length) {
+        list.push(<Footer />)
+      }
     }
     return list
   }
@@ -56,7 +59,6 @@ class List extends React.Component {
       <div className="list-template">
         {this.getlist()}
         <Loading show={this.props.displayLoading} />
-        <footer />
       </div>
     )
   }
