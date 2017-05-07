@@ -3,6 +3,11 @@
  */
 
 .footer-body {
+  display: flex;
+  /* position: relative; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(27,27,27);
   color: white;
   height: 90px;

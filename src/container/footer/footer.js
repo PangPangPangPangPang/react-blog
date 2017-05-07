@@ -8,7 +8,9 @@ import './footer.css'
 const Footer = () =>
   (
     <div className="footer-body">
-      aaa
+      <div>
+        Powered by Max.
+      </div>
     </div>
   )
 
