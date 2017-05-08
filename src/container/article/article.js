@@ -10,7 +10,7 @@ import request from '../../action/request'
 import './article.css'
 import getStore from '../../App'
 import Loading from '../../compontent/loading'
-import footer from '../footer/footer'
+import Footer from '../footer/footer'
 
 const renderer = new marked.Renderer()
 
@@ -67,12 +67,14 @@ class Article extends React.Component {
   }
   render() {
     return (
-      <div className="article-page">
-        <Loading show={this.props.displayLoading} />
-        <div
-          className="article-page"
-          dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
-        <footer />
+      <div>
+        <div className="article-page">
+          <Loading show={this.props.displayLoading} />
+          <div
+            className="article-page"
+            dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
+        </div>
+        <Footer />
       </div>
     )
   }
