@@ -49,7 +49,7 @@ class List extends React.Component {
         />)
       }
       if (sourceList.length) {
-        list.push(<Footer />)
+        list.push(<Footer key={1000} />)
       }
     }
     return list

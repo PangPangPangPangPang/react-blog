@@ -4,6 +4,7 @@
 import React from 'react'
 import './home.css'
 import '../about/about.css'
+import Footer from '../footer/footer'
 
 export default class Home extends React.Component {
 
@@ -95,6 +96,7 @@ export default class Home extends React.Component {
     return (
       <div className="home-template" style={{ height: document.body.clientHeight - 48 }}>
         <canvas ref={(c) => { this.canvas = c }} width={`${document.body.clientWidth}`} height={'1500'} />
+        <Footer color="white" />
       </div>
     )
   }
