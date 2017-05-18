@@ -25,3 +25,26 @@
   height: 90px;
   width: 100%;
 }
+
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  fill: black;
+}
+
+.footer-icon-white {
+  fill: white;
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.footer-icon-black {
+  fill: rgb(27,27,27);
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  margin-top: 10px;
+}

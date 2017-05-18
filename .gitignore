@@ -40,4 +40,5 @@ jspm_packages
 
 .idea/*
 
+bundle.js
 # build/*

@@ -10,6 +10,8 @@ const pushpinImg = require('../resource/svg/push-pin.svg')
 const articleImg = require('../resource/svg/notebook-1.svg')
 const aboutImg = require('../resource/svg/user-6.svg')
 const defaultImg = require('../resource/svg/home.svg')
+const weiboImg = require('../resource/svg/weibo.svg')
+const githubImg = require('../resource/svg/github.svg')
 
 
 class NormalButton extends React.Component {
@@ -58,6 +60,14 @@ class NormalButton extends React.Component {
       }
       case 'about': {
         Img = aboutImg
+        break
+      }
+      case 'github': {
+        Img = githubImg
+        break
+      }
+      case 'weibo': {
+        Img = weiboImg
         break
       }
       default: {
