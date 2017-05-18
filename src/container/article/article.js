@@ -65,6 +65,14 @@ class Article extends React.Component {
     }
     dispatch(request('article', dic, 'get'))
   }
+  getFooter() {
+    if (this.props.displayLoading === 0) {
+      return (
+        <Footer />
+      )
+    }
+    return null
+  }
   render() {
     return (
       <div>
@@ -74,7 +82,7 @@ class Article extends React.Component {
             className="article-page"
             dangerouslySetInnerHTML={{ __html: marked(this.props.content) }} />
         </div>
-        <Footer />
+        {this.getFooter()}
       </div>
     )
   }
