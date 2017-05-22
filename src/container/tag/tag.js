@@ -8,7 +8,7 @@ class Tag extends React.Component {
   constructor() {
     super()
     this.arr = []
-    this.ws = new WebSocket('ws://www.mmmmmmax.wang/chat')
+    this.ws = new WebSocket('ws://www.mmmmmax.wang/chat')
     this.state = {
       userName: '',
       toName: '',
@@ -29,7 +29,8 @@ class Tag extends React.Component {
     }
     this.ws.onclose = () => {
     }
-    this.ws.onerror = () => {
+    this.ws.onerror = (e) => {
+      console.log(e)
     }
   }
   handleChange = (e) => {
