@@ -6,7 +6,7 @@ import React from 'react'
 import './normal_button.css'
 
 const homeImg = require('../resource/svg/home.svg')
-const pushpinImg = require('../resource/svg/push-pin.svg')
+const pushpinImg = require('../resource/svg/paper-plane-1.svg')
 const articleImg = require('../resource/svg/notebook-1.svg')
 const aboutImg = require('../resource/svg/user-6.svg')
 const defaultImg = require('../resource/svg/home.svg')

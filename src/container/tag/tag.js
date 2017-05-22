@@ -7,16 +7,25 @@ import './tag.css'
 class Tag extends React.Component {
   constructor() {
     super()
+    this.arr = []
     this.ws = new WebSocket('ws://localhost:8000/chat')
     this.state = {
       userName: '',
       toName: '',
+      sentence: '',
+      arr: [],
     }
   }
   componentDidMount() {
     this.ws.onopen = () => {
     }
-    this.ws.onmessage = () => {
+    this.ws.onmessage = (e) => {
+      this.arr.push(
+        <div>{`Fr:${JSON.parse(e.data).message}`}</div>,
+      )
+      this.setState({
+        arr: this.arr,
+      })
     }
     this.ws.onclose = () => {
     }
@@ -33,13 +42,24 @@ class Tag extends React.Component {
       toName: e.target.value,
     })
   }
+  handleSentenceChange = (e) => {
+    this.setState({
+      sentence: e.target.value,
+    })
+  }
   clickButton = () => {
     const a = {
       action: 'normal',
       from: this.state.userName,
       to: this.state.toName,
-      message: 'Hello!',
+      message: this.state.sentence,
     }
+    this.arr.push(
+      <div>{`Me:${this.state.sentence}`}</div>,
+    )
+    this.setState({
+      arr: this.arr,
+    })
     this.ws.send(JSON.stringify(a))
   }
   clickRegister = () => {
@@ -47,6 +67,7 @@ class Tag extends React.Component {
       action: 'register',
       from: this.state.userName,
       to: this.state.toName,
+      message: 'register',
     }
     this.ws.send(JSON.stringify(a))
   }
@@ -54,14 +75,17 @@ class Tag extends React.Component {
     return (
       <div>
         <form onSubmit={this.clickRegister}>
-          UserName:
-          <input type="text" value={this.state.userName} onChange={this.handleChange} />
-          <input type="text" value={this.state.toName} onChange={this.handleToChange} />
+          <div>from:</div>
+          <input className="tag-input" type="text" value={this.state.userName} onChange={this.handleChange} />
+          <div>to:</div>
+          <input className="tag-input" type="text" value={this.state.toName} onChange={this.handleToChange} />
           <button type="submit">Submit</button>
         </form>
+        <input className="tag-input" type="text" value={this.state.sentence} onChange={this.handleSentenceChange} />
         <button onClick={this.clickButton}>
           Send Message!
         </button>
+        {this.state.arr}
       </div>
     )
   }
