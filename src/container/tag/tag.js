@@ -74,13 +74,13 @@ class Tag extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.clickRegister}>
-          <div>from:</div>
-          <input className="tag-input" type="text" value={this.state.userName} onChange={this.handleChange} />
-          <div>to:</div>
-          <input className="tag-input" type="text" value={this.state.toName} onChange={this.handleToChange} />
-          <button type="submit">Submit</button>
-        </form>
+        <div>from:</div>
+        <input className="tag-input" type="text" value={this.state.userName} onChange={this.handleChange} />
+        <div>to:</div>
+        <input className="tag-input" type="text" value={this.state.toName} onChange={this.handleToChange} />
+        <button onClick={this.clickRegister}>
+          Submit
+        </button>
         <input className="tag-input" type="text" value={this.state.sentence} onChange={this.handleSentenceChange} />
         <button onClick={this.clickButton}>
           Send Message!
