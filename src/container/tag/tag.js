@@ -2,9 +2,17 @@
  * Created by wangyefeng on 05/03/2017.
  */
 import React from 'react'
+import { connect } from 'react-redux'
 import './tag.css'
+import request from '../../action/request'
 
 class Tag extends React.Component {
+  static propTypes = {
+    dispatch: React.PropTypes.func,
+  }
+  static defaultProps = {
+    dispatch: {},
+  }
   constructor() {
     super()
     this.arr = []
@@ -21,7 +29,7 @@ class Tag extends React.Component {
     }
     this.ws.onmessage = (e) => {
       this.arr.push(
-        <div>{`Fr:${JSON.parse(e.data).message}`}</div>,
+        <div>{`Fr:${JSON.parse(e.data).content.message}`}</div>,
       )
       this.setState({
         arr: this.arr,
@@ -49,11 +57,14 @@ class Tag extends React.Component {
     })
   }
   clickButton = () => {
-    const a = {
-      action: 'normal',
+    const retsult = {
       from: this.state.userName,
       to: this.state.toName,
       message: this.state.sentence,
+    }
+    const a = {
+      action: 'normal',
+      content: retsult,
     }
     this.arr.push(
       <div>{`Me:${this.state.sentence}`}</div>,
@@ -64,13 +75,13 @@ class Tag extends React.Component {
     this.ws.send(JSON.stringify(a))
   }
   clickRegister = () => {
-    const a = {
-      action: 'register',
-      from: this.state.userName,
-      to: this.state.toName,
-      message: 'register',
+    const result = {
+      name: this.state.userName,
     }
-    this.ws.send(JSON.stringify(a))
+    request('register', result).then((res) => {
+      console.log(res)
+    })
+    // this.ws.send(JSON.stringify(a))
   }
   render() {
     return (
@@ -93,4 +104,4 @@ class Tag extends React.Component {
 
 }
 
-export default Tag
+export default connect()(Tag)

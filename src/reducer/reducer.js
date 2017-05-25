@@ -17,6 +17,8 @@ function handleRequestSuccess(state, action) {
   switch (k) {
     case 'list':
       return Object.assign({}, state, { list: action })
+    case 'register':
+      return Object.assign({}, state, { register: action })
     case 'article':
       if (action.res.article_id) {
         const obj = {}
