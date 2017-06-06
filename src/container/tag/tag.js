@@ -5,6 +5,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './tag.css'
 import request from '../../action/request'
+import { ToastManager, Toast } from '../../compontent/toast'
 
 class Tag extends React.Component {
   static propTypes = {
@@ -42,7 +43,7 @@ class Tag extends React.Component {
     }
     this.ws.onclose = () => {
     }
-    this.ws.onerror = (e) => {
+    this.ws.onerror = () => {
     }
   }
   handleChange = (e) => {
@@ -84,8 +85,19 @@ class Tag extends React.Component {
       name: this.state.userName,
     }
     dispatch(request('register', result)).then((res) => {
-      if (res.statusCode === 1) {
+      if (res.statusCode === 1
+        || res.statusCode === 99) {
+        let mes = ''
+        if (res.statusCode === 1) {
+          mes = '注册成功'
+        } else {
+          mes = '登录成功'
+        }
+        // Show success toast
+        ToastManager.showToast(true, mes)
+        // Save userId
         localStorage.setItem('userId', res.userId)
+        // Update UI
         this.setState({
           loginStatus: true,
         })
@@ -104,6 +116,7 @@ class Tag extends React.Component {
           <button onClick={this.clickRegister}>
             Submit
           </button>
+          <Toast />
         </div>
       )
     }
@@ -113,6 +126,7 @@ class Tag extends React.Component {
         <button onClick={this.clickButton}>
           Send Message!
         </button>
+        <Toast toastMessage={'haha'} toastFunc={this.state.toastFunc} />
       </div>
     )
   }
