@@ -15,6 +15,10 @@ class Tag extends React.Component {
   }
   constructor() {
     super()
+    let login = false
+    if (localStorage.getItem('userId')) {
+      login = true
+    }
     this.arr = []
     this.ws = new WebSocket('ws://www.mmmmmax.wang/chat')
     this.state = {
@@ -22,6 +26,7 @@ class Tag extends React.Component {
       toName: '',
       sentence: '',
       arr: [],
+      loginStatus: login,
     }
   }
   componentDidMount() {
@@ -38,7 +43,6 @@ class Tag extends React.Component {
     this.ws.onclose = () => {
     }
     this.ws.onerror = (e) => {
-      console.log(e)
     }
   }
   handleChange = (e) => {
@@ -75,28 +79,47 @@ class Tag extends React.Component {
     this.ws.send(JSON.stringify(a))
   }
   clickRegister = () => {
+    const { dispatch } = this.props
     const result = {
       name: this.state.userName,
     }
-    request('register', result).then((res) => {
-      console.log(res)
+    dispatch(request('register', result)).then((res) => {
+      if (res.statusCode === 1) {
+        localStorage.setItem('userId', res.userId)
+        this.setState({
+          loginStatus: true,
+        })
+      }
     })
-    // this.ws.send(JSON.stringify(a))
   }
-  render() {
+
+  showLoginUserInterface = () => {
+    if (!this.state.loginStatus) {
+      return (
+        <div>
+          <div>from:</div>
+          <input className="tag-input" type="text" value={this.state.userName} onChange={this.handleChange} />
+          <div>to:</div>
+          <input className="tag-input" type="text" value={this.state.toName} onChange={this.handleToChange} />
+          <button onClick={this.clickRegister}>
+            Submit
+          </button>
+        </div>
+      )
+    }
     return (
       <div>
-        <div>from:</div>
-        <input className="tag-input" type="text" value={this.state.userName} onChange={this.handleChange} />
-        <div>to:</div>
-        <input className="tag-input" type="text" value={this.state.toName} onChange={this.handleToChange} />
-        <button onClick={this.clickRegister}>
-          Submit
-        </button>
         <input className="tag-input" type="text" value={this.state.sentence} onChange={this.handleSentenceChange} />
         <button onClick={this.clickButton}>
           Send Message!
         </button>
+      </div>
+    )
+  }
+  render() {
+    return (
+      <div>
+        { this.showLoginUserInterface() }
         {this.state.arr}
       </div>
     )
