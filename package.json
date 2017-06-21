@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dev": "NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "./node_modules/webpack/bin/webpack.js --optimize-minimize -p"
+    "prod": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --optimize-minimize -p"
   },
   "theme": {
     "primary-color": "#7FFFD4"
