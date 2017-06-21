@@ -21,7 +21,7 @@ class Tag extends React.Component {
       login = true
     }
     this.arr = []
-    this.ws = new WebSocket('ws://www.mmmmmax.wang/chat')
+    this.ws = new WebSocket('ws://mmmmmax.cn/chat')
     this.state = {
       userName: '',
       toName: '',

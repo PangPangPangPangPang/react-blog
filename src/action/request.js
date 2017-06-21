@@ -5,8 +5,8 @@
 import Type from './type'
 import getStore from '../App'
 
-const baseUrl = 'http://localhost:8000/'
-// const baseUrl = 'http://www.mmmmmax.wang/'
+// const baseUrl = 'http://localhost:8000/'
+const baseUrl = 'http://mmmmmax.cn/'
 
 function requestAction(type, query, res) {
   return {
